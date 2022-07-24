@@ -1,13 +1,14 @@
 var erros = [];
 var numSorteado = Math.floor(Math.random()*100)+1;
 const chances = 6;
+var totalchances;
 function apostar(){
     var Innum = document.getElementById("num");
     var num = Number(Innum.value);
     var respChances = document.getElementById("chances");
     var respErros = document.getElementById("erros");
     var dica = document.getElementById("dica");
-
+    
     if (num<=0 || num>100 || isNaN(num)){
         alert("Digite um valor válido que seja acima de 0 e menor que 100!")
         Innum.value = "";
@@ -17,6 +18,8 @@ function apostar(){
     if (num == numSorteado){
         alert("Parabéns!! Você acertou o Número!")
         dica.textContent = "Muito bem! , o valor sorteado foi " + numSorteado;
+        aposta.disabled = true;
+        jogarDenovo.className = "exibe";
     }
     if (erros.indexOf(num) >=0 ){
         alert("Valor já digitado!")
@@ -28,14 +31,17 @@ function apostar(){
    
     for (var i = 1; i<=erros.length;i++){
         var numChances = i;
-        var totalchances = chances - numChances;
+        totalchances = chances - numChances;
         respChances.textContent = chances - numChances;
         respErros.textContent = erros.length + "("+ erros.join(",")+")";
     }
     if (totalchances == 0){
         alert("Chances acabaram!!")
         dica.textContent = "Você não acertou o número, o valor sorteado foi " + numSorteado + ".";
-        return
+        aposta.disabled = true;
+        jogarDenovo.className = "exibe";
+        aposta.style = " height: 40%; font-family: 'Times New Roman', Times, serif; font-size: 25px;border-style:hidden;border-color: gray;color: rgb(170, 169, 169);"
+    
     }else{
         var respDica = num < numSorteado? "maior" : "menor";
         dica.textContent = "Digite um valor " + respDica + " que " + num;

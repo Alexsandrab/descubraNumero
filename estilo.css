@@ -16,7 +16,7 @@
             position: relative;
         }
 
-        .bt1 {
+        .bt1 , .oculta, .exibe{
             width: 25%;
             height: 40%;
             font-family: 'Times New Roman', Times, serif;
