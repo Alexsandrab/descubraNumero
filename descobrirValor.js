@@ -20,32 +20,35 @@ function apostar(){
         dica.textContent = "Muito bem! , o valor sorteado foi " + numSorteado;
         aposta.disabled = true;
         jogarDenovo.className = "exibe";
-    }
-    if (erros.indexOf(num) >=0 ){
+        dica.textContent = "Aeee, acertou o número";
+        respChances.textContent = "Genial!!";
+        respErros.textContent = "Parabéns!"
+        return
+    }else if (erros.indexOf(num) >=0 ){
         alert("Valor já digitado!")
         Innum.value = "";
         Innum.focus();
     }else{
         erros.push(num);
     }
-   
+    if (totalchances == 0){
+        alert("Chances acabaram!!")
+        dica.textContent = "Você não acertou o número, o valor sorteado foi " + numSorteado + ".";
+        aposta.disabled = true;
+        jogarDenovo.className = "exibe";
+    }else{
+        var respDica = num < numSorteado? "maior" : "menor";
+        dica.textContent = "Digite um valor " + respDica + " que " + num;
+    }
+
+
     for (var i = 1; i<=erros.length;i++){
         var numChances = i;
         totalchances = chances - numChances;
         respChances.textContent = chances - numChances;
         respErros.textContent = erros.length + "("+ erros.join(",")+")";
     }
-    if (totalchances == 0){
-        alert("Chances acabaram!!")
-        dica.textContent = "Você não acertou o número, o valor sorteado foi " + numSorteado + ".";
-        aposta.disabled = true;
-        jogarDenovo.className = "exibe";
-        aposta.style = " height: 40%; font-family: 'Times New Roman', Times, serif; font-size: 25px;border-style:hidden;border-color: gray;color: rgb(170, 169, 169);"
-    
-    }else{
-        var respDica = num < numSorteado? "maior" : "menor";
-        dica.textContent = "Digite um valor " + respDica + " que " + num;
-    }
+
     Innum.value = "";
     Innum.focus();
 }

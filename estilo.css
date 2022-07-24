@@ -16,7 +16,7 @@
             position: relative;
         }
 
-        .bt1 , .oculta, .exibe{
+        .bt1 , .exibe, .oculta{
             width: 25%;
             height: 40%;
             font-family: 'Times New Roman', Times, serif;
@@ -43,3 +43,14 @@
             position: relative;
             left: 900px;
         }
+        :disabled{
+            width: 25%;
+            height: 40%;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 25px;
+            border-style:hidden;
+            border-color: rgb(136, 138, 136);
+            color: rgb(183, 184, 183);
+
+        }
+       
